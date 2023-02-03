@@ -1,3 +1,5 @@
+#%%
+
 import pandas as pd
 import numpy as np
 
@@ -143,3 +145,5 @@ matriz_mineria_derivable = crear_matriz_carga_derivable('Matrices/Matrices Grupo
 
 # resultado final
 trans_matriz_a_xlsx(matriz_mineria_derivable, 'Matrices/Derivabilidad_mineria_1.xlsx')
+
+# %%
