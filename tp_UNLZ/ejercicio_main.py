@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Feb  5 15:03:19 2023
+Created on Sat Feb  4 11:19:33 2023
 
 @author: Luis
 """
+
+import ejercicio
 
 import pandas as pd
 
@@ -14,103 +16,7 @@ cargas_mineria =pd.read_excel('Matrices/Matrices Grupo Mineria_tp.xlsx',
 #%%
 criterio = pd.read_excel('Matrices/Criterios de derivabilidad_tp.xlsx', sheet_name='MINERIA') 
 
-#%%
-lista_camion = [{'Origen': 'OLAVARRIA',
-  'ID origen': 1,
-  'Destino': 'OLAVARRIA',
-  'ID destino': 1,
-  'Carga': 39319,
-  'Distancia': 0},
- {'Origen': 'CABA',
-  'ID origen': 2,
-  'Destino': 'OLAVARRIA',
-  'ID destino': 1,
-  'Carga': 0,
-  'Distancia': 0},
- {'Origen': 'LA CARLOTA',
-  'ID origen': 3,
-  'Destino': 'OLAVARRIA',
-  'ID destino': 1,
-  'Carga': 16948,
-  'Distancia': 0},
- {'Origen': 'VENADO TUERTO',
-  'ID origen': 4,
-  'Destino': 'OLAVARRIA',
-  'ID destino': 1,
-  'Carga': 275000,
-  'Distancia': 0},
- {'Origen': 'OLAVARRIA',
-  'ID origen': 1,
-  'Destino': 'CABA',
-  'ID destino': 2,
-  'Carga': 133000,
-  'Distancia': 500},
- {'Origen': 'CABA',
-  'ID origen': 2,
-  'Destino': 'CABA',
-  'ID destino': 2,
-  'Carga': 34000,
-  'Distancia': 0},
- {'Origen': 'LA CARLOTA',
-  'ID origen': 3,
-  'Destino': 'CABA',
-  'ID destino': 2,
-  'Carga': 1325674,
-  'Distancia': 750},
- {'Origen': 'VENADO TUERTO',
-  'ID origen': 4,
-  'Destino': 'CABA',
-  'ID destino': 2,
-  'Carga': 12000000,
-  'Distancia': 200},
- {'Origen': 'OLAVARRIA',
-  'ID origen': 1,
-  'Destino': 'LA CARLOTA',
-  'ID destino': 3,
-  'Carga': 1300,
-  'Distancia': 0},
- {'Origen': 'CABA',
-  'ID origen': 2,
-  'Destino': 'LA CARLOTA',
-  'ID destino': 3,
-  'Carga': 2200,
-  'Distancia': 0},
- {'Origen': 'LA CARLOTA',
-  'ID origen': 3,
-  'Destino': 'LA CARLOTA',
-  'ID destino': 3,
-  'Carga': 4200000,
-  'Distancia': 0},
- {'Origen': 'VENADO TUERTO',
-  'ID origen': 4,
-  'Destino': 'LA CARLOTA',
-  'ID destino': 3,
-  'Carga': 0,
-  'Distancia': 0},
- {'Origen': 'OLAVARRIA',
-  'ID origen': 1,
-  'Destino': 'VENADO TUERTO',
-  'ID destino': 4,
-  'Carga': 50000,
-  'Distancia': 0},
- {'Origen': 'CABA',
-  'ID origen': 2,
-  'Destino': 'VENADO TUERTO',
-  'ID destino': 4,
-  'Carga': 15000,
-  'Distancia': 0},
- {'Origen': 'LA CARLOTA',
-  'ID origen': 3,
-  'Destino': 'VENADO TUERTO',
-  'ID destino': 4,
-  'Carga': 65000,
-  'Distancia': 0},
- {'Origen': 'VENADO TUERTO',
-  'ID origen': 4,
-  'Destino': 'VENADO TUERTO',
-  'ID destino': 4,
-  'Carga': 10000,
-  'Distancia': 0}]
+
 
 #%%
 def calcular_derivabilidad(lista_cargas, derivabilidad):
@@ -177,4 +83,4 @@ def calcular_derivabilidad(lista_cargas, derivabilidad):
         
     return derivable 
 
-lista_derivable = calcular_derivabilidad(lista_camion, criterio)
+lista_derivable = calcular_derivabilidad(ejercicio.lista_camion, criterio)
