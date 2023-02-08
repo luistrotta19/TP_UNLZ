@@ -4,19 +4,29 @@ Created on Sat Feb  4 11:19:33 2023
 
 @author: Luis
 """
-
+'''
+Se importa el módulo que son las listas de cargas y parámetros de cada orígen y destino,
+estas listas provienen de los exceles base de datos de la carpeta Matrices, se procesan con python 
+para obtenerlas, para simplificar el ejemplo, ya se colocaron en forma de listas, donde cada
+componente, tiene el formato de diccionario.Y también el módulo Pandas.
+'''
 import ejercicio
-
 import pandas as pd
 
-carga_camion_mineria = pd.DataFrame(ejercicio.lista_camion)
-carga_camion_mineria.to_excel('Matrices/Carga_Mineria_Aderivar.xlsx')
+'''
+Se transforma la lista base de cada producto en DataFrame, para visualizar mejor su
+formato, y luego de lo expota como excel a la carpeta "resultados"
+'''
+carga_camion_mineria = pd.DataFrame(ejercicio.lista_camion_mineria)
+carga_camion_mineria.to_excel('Matrices/resultados/Carga_Mineria_Aderivar.xlsx')
 
-cargas_mineria = pd.read_excel('Matrices/Matrices Grupo Mineria_tp.xlsx',sheet_name='Total Toneladas Mineria 2014', usecols=(range(1,5)))
+carga_camion_granos = pd.DataFrame(ejercicio.lista_camion_granos)
+carga_camion_granos.to_excel('Matrices/resultados/Carga_Granos_Aderivar.xlsx')
 
+'''
+Se leen de un excel los criterios de derivabilidad de la carga.
+'''
 criterio = pd.read_excel('Matrices/Criterios de derivabilidad_tp.xlsx', sheet_name='MINERIA') 
-
-
 
 
 def calcular_derivabilidad(lista_cargas, derivabilidad):
@@ -83,7 +93,19 @@ def calcular_derivabilidad(lista_cargas, derivabilidad):
         
     return derivable 
 
-lista_derivable = calcular_derivabilidad(ejercicio.lista_camion, criterio)
+lista_derivable_mineria = calcular_derivabilidad(ejercicio.lista_camion_mineria, criterio)
+lista_derivable_granos = calcular_derivabilidad(ejercicio.lista_camion_granos, criterio)
 
-df = pd.DataFrame(lista_derivable)
-df.to_excel('Matrices/Derivabilidad_mineria_3.xlsx')
+df_mineria = pd.DataFrame(lista_derivable_mineria)
+df_mineria.to_excel('Matrices/resultados/Derivabilidad_mineria.xlsx')
+
+df_granos = pd.DataFrame(lista_derivable_granos)
+df_granos.to_excel('Matrices/resultados/Derivabilidad_granos.xlsx')
+
+df_mineria = df_mineria.drop(['ID origen', 'ID destino', 'Distancia'], axis=1)
+df_granos = df_granos.drop(['ID origen', 'ID destino', 'Distancia'], axis=1)
+
+df_total_derivado = df_granos + df_mineria
+
+
+df_total_derivado = df_total_derivado.replace({"OLAVARRIAOLAVARRIA": 'OLAVARRIA', "CABACABA":'CABA',"LA CARLOTALA CARLOTA": 'LA CARLOTA'})
